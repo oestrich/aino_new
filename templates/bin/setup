@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -exu -o pipefail
+
+# Install elixir/erlang/node via asdf if present
+if command -v asdf &> /dev/null
+then
+  asdf install erlang
+  asdf install elixir
+  asdf install nodejs
+fi
+
+mix deps.get
+mix ecto.create
+mix ecto.migrate
+(cd assets && yarn install && yarn build:css)

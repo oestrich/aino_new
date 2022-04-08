@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @app_module %></title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/css/app.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="mx-16 mt-4">
+      <%%= if error = Session.Flash.get(token, :error) do %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-2" role="alert">
+          <%%= error %>
+        </div>
+      <%% end %>
+
+      <%%= if info = Session.Flash.get(token, :info) do %>
+        <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mb-2" role="alert">
+          <%%= info %>
+        </div>
+      <%% end %>
+
+      <%%= @inner_content %>
+    </div>
+  </body>
+</html>

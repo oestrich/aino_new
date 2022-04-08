@@ -1,0 +1,6 @@
+DEPLOY_ENV=development
+HOST=localhost
+PORT=4000
+SESSION_SALT=salt
+
+DATABASE_URL=postgresql://localhost/<%= @app %>_dev
