@@ -6,7 +6,11 @@ defmodule AinoNew.MixProject do
       app: :aino_new,
       version: "0.3.1",
       elixir: "~> 1.13",
-      start_permanent: Mix.env() == :prod
+      start_permanent: Mix.env() == :prod,
+      package: [
+        maintainers: ["Eric Oestrich"],
+        licenses: ["MIT"],
+      ]
     ]
   end
 
