@@ -5,6 +5,10 @@ set -exu -o pipefail
 # Install elixir/erlang/node via asdf if present
 if command -v asdf &> /dev/null
 then
+  (asdf plugin list | grep erlang) || asdf plugin install erlang
+  (asdf plugin list | grep elixir) || asdf plugin install elixir
+  (asdf plugin list | grep nodejs) || asdf plugin install nodejs
+
   asdf install erlang
   asdf install elixir
   asdf install nodejs
