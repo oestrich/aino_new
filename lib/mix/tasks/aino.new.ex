@@ -17,10 +17,13 @@ defmodule Mix.Tasks.Aino.New do
     "assets/postcss.config.js",
     "assets/tailwind.config.js",
     "assets/css/app.scss",
-    "bin/server",
-    "bin/setup",
     "shell.nix",
     "test/test_helper.exs"
+  ]
+
+  @bin_files [
+    "bin/server",
+    "bin/setup"
   ]
 
   @folders [
@@ -77,6 +80,11 @@ defmodule Mix.Tasks.Aino.New do
       Mix.Generator.copy_file(Path.join(template_path, file), Path.join(project_path, file))
     end)
 
+    Enum.each(@bin_files, fn file ->
+      Mix.Generator.copy_file(Path.join(template_path, file), Path.join(project_path, file))
+      File.chmod!(Path.join(project_path, file), 0o755)
+    end)
+
     Enum.each(@folders, fn folder ->
       Mix.Generator.create_directory(Path.join(project_path, folder))
     end)
@@ -103,9 +111,7 @@ defmodule Mix.Tasks.Aino.New do
     To finish installing, perform the following setup steps
 
         cd #{app}/
-        mix deps.get
-        (cd assets && yarn install && yarn build:css)
-        mix ecto.create
+        ./bin/setup
         mix run --no-halt
     """)
   end

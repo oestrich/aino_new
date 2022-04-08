@@ -13,4 +13,7 @@ fi
 mix deps.get
 mix ecto.create
 mix ecto.migrate
+
+command -v yarn &> /dev/null || npm install -g yarn
+
 (cd assets && yarn install && yarn build:css)
