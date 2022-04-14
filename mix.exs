@@ -10,7 +10,9 @@ defmodule AinoNew.MixProject do
       package: [
         maintainers: ["Eric Oestrich"],
         licenses: ["MIT"],
-      ]
+      ],
+      preferred_cli_env: [docs: :docs],
+      deps: deps()
     ]
   end
 
@@ -18,6 +20,12 @@ defmodule AinoNew.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp deps() do
+    [
+      {:ex_doc, "~> 0.28.3", only: [:docs]}
     ]
   end
 end
