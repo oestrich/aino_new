@@ -22,7 +22,7 @@ defmodule <%= @app_module %>.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps() do
     [
-      {:aino, "~> 0.3"},
+      {:aino, "~> 0.4"},
       {:ecto_sql, "~> 3.7"},
       {:postgrex, "~> 0.16"},
       {:vapor, "~> 0.10.0"}
