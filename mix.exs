@@ -15,7 +15,6 @@ defmodule AinoNew.MixProject do
           "GitHub" => "https://github.com/oestrich/aino_new"
         }
       ],
-      preferred_cli_env: [docs: :docs],
       deps: deps()
     ]
   end
@@ -29,7 +28,7 @@ defmodule AinoNew.MixProject do
 
   defp deps() do
     [
-      {:ex_doc, "~> 0.28.3", only: [:docs]}
+      {:ex_doc, "~> 0.28.3", only: [:dev], runtime: false}
     ]
   end
 end
