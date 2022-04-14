@@ -7,9 +7,13 @@ defmodule AinoNew.MixProject do
       version: "0.4.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
+      description: "Installer and new project generator for Aino",
       package: [
         maintainers: ["Eric Oestrich"],
         licenses: ["MIT"],
+        links: %{
+          "GitHub" => "https://github.com/oestrich/aino_new"
+        }
       ],
       preferred_cli_env: [docs: :docs],
       deps: deps()
