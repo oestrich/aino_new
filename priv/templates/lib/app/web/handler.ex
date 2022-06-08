@@ -1,13 +1,15 @@
 defmodule <%= @app_module %>.Web.Handler do
   @moduledoc false
 
-  import Aino.Middleware.Routes, only: [routes: 1, get: 3]
+  import Aino.Middleware.Routes, only: [get: 3]
 
   @behaviour Aino.Handler
 
-  routes([
-    get("/", &<%= @app_module %>.Web.Page.root/1, as: :root)
-  ])
+  def routes() do
+    [
+      get("/", &<%= @app_module %>.Web.Page.root/1, as: :root)
+    ]
+  end
 
   @impl true
   def handle(token) do

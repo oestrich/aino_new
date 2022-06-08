@@ -25,18 +25,19 @@ defmodule <%= @app_module %>.Application do
   defp aino(config) do
     case config.environment != "test" do
       true ->
-        simple_config = %{
-          session_salt: config.session_salt
+        aino_config = %Aino.Config{
+          callback: <%= @app_module %>.Web.Handler,
+          otp_app: :<%= @app %>,
+          port: config.port,
+          host: config.host,
+          environment: config.environment,
+          config:  %{
+            session_salt: config.session_salt
+          }
         }
 
         [
-          {Aino,
-           callback: <%= @app_module %>.Web.Handler,
-           otp_app: :<%= @app %>,
-           port: config.port,
-           host: config.host,
-           environment: config.environment,
-           config: simple_config},
+          {Aino, aino_config},
           {Aino.Watcher, name: <%= @app_module %>.Web.Watcher, watchers: watchers(config.environment)}
         ]
 
