@@ -30,31 +30,18 @@ defmodule <%= @app_module %>.Application do
           otp_app: :<%= @app %>,
           port: config.port,
           host: config.host,
+          url_port: config.url_port,
+          url_scheme: config.url_scheme,
           environment: config.environment,
-          config:  %{
+          config: %{
             session_salt: config.session_salt
           }
         }
 
-        [
-          {Aino, aino_config},
-          {Aino.Watcher, name: <%= @app_module %>.Web.Watcher, watchers: watchers(config.environment)}
-        ]
+        [{Aino, aino_config}]
 
       false ->
         []
     end
   end
-
-  defp watchers("development") do
-    [
-      [
-        command: "node_modules/yarn/bin/yarn",
-        args: ["build:css:watch"],
-        directory: "assets/"
-      ]
-    ]
-  end
-
-  defp watchers(_), do: []
 end

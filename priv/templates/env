@@ -3,4 +3,7 @@ HOST=localhost
 PORT=4000
 SESSION_SALT=salt
 
+URL_PORT=4000
+URL_SCHEME=http
+
 DATABASE_URL=postgresql://localhost/<%= @app %>_dev

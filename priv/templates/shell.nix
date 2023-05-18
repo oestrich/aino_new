@@ -11,7 +11,6 @@ let
   basePackages = [
     pkgs.gnumake
     pkgs.gcc
-    pkgs.libcap
     pkgs.readline
     pkgs.zlib
     pkgs.libxml2
@@ -30,7 +29,7 @@ let
 
   inputs = basePackages
     ++ [ pkgs.bashInteractive ]
-    ++ pkgs.lib.optionals pkgs.stdenv.isLinux [ pkgs.inotify-tools ]
+    ++ pkgs.lib.optionals pkgs.stdenv.isLinux [ pkgs.inotify-tools pkgs.libcap ]
     ++ pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [
         CoreFoundation
         CoreServices
